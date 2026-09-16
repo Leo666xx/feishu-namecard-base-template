@@ -1,0 +1,36 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.log
+*.bak
+.create-result.json
+
+# Node / CLI cache
+node_modules/
+.npm/
+.lark-cli/
+.claude/
+.env
+.env.*
+*.token
+
+# IDE / editor
+.vscode/
+.idea/
+
+# Local auth artifacts
+*.pem
+*.crt
+*.key
+
+# Build / output artifacts
+dist/
+build/
+out/
+coverage/
+
+# Shell script runtime
+install.log

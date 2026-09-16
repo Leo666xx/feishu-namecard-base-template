@@ -1,0 +1,51 @@
+{
+  "client_token": "__CLIENT_TOKEN__",
+  "title": "拍照识别名片信息",
+  "steps": [
+    {
+      "id": "trigc4P0qeZu",
+      "type": "AddRecordTrigger",
+      "title": "添加新记录时",
+      "next": "actCxp6gZfo",
+      "data": {
+        "table_name": "名片表",
+        "watched_field_name": "名片图片",
+        "trigger_control_list": ["pasteUpdate", "automationBatchUpdate", "openAPIBatchUpdate"]
+      }
+    },
+    {
+      "id": "actCxp6gZfo",
+      "type": "AIAgentAction",
+      "title": "AI Agent",
+      "next": "actDZGpe6xp",
+      "children": {
+        "links": [
+          { "kind": "slot", "label": "llm", "to": "" },
+          { "kind": "slot", "label": "memory", "to": "" },
+          { "kind": "slot", "label": "tool", "to": "" }
+        ]
+      },
+      "data": {}
+    },
+    {
+      "id": "actDZGpe6xp",
+      "type": "SetRecordAction",
+      "title": "修改记录",
+      "next": null,
+      "data": {
+        "table_name": "名片表",
+        "ref_info": { "step_id": "trigc4P0qeZu" },
+        "filter_info": null,
+        "max_set_record_num": 100,
+        "field_values": [
+          { "field_name": "姓名", "value": [{ "value_type": "ref", "value": "$.actCxp6gZfo.姓名" }] },
+          { "field_name": "职位", "value": [{ "value_type": "ref", "value": "$.actCxp6gZfo.职位" }] },
+          { "field_name": "公司", "value": [{ "value_type": "ref", "value": "$.actCxp6gZfo.公司" }] },
+          { "field_name": "电话", "value": [{ "value_type": "ref", "value": "$.actCxp6gZfo.电话" }] },
+          { "field_name": "邮箱", "value": [{ "value_type": "ref", "value": "$.actCxp6gZfo.邮箱" }] },
+          { "field_name": "地址", "value": [{ "value_type": "ref", "value": "$.actCxp6gZfo.地址" }] }
+        ]
+      }
+    }
+  ]
+}

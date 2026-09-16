@@ -1,0 +1,22 @@
+[
+  {"name": "姓名", "type": "text"},
+  {"name": "名片图片", "type": "attachment"},
+  {"name": "图片解析", "type": "text"},
+  {"name": "备注", "type": "text"},
+  {"name": "职位", "type": "text"},
+  {"name": "公司", "type": "text"},
+  {"name": "电话", "type": "text"},
+  {"name": "邮箱", "type": "text"},
+  {"name": "地址", "type": "text"},
+  {"name": "录入时间", "type": "created_at", "style": {"format": "yyyy/MM/dd HH:mm"}},
+  {"name": "开发信2.输出结果", "type": "text"},
+  {"name": "开发信发送记录", "type": "select", "multiple": false, "default_value": ["已发送"], "options": [
+    {"name": "已发送", "hue": "Blue", "lightness": "Lighter"},
+    {"name": "邮箱失效", "hue": "Orange", "lightness": "Lighter"}
+  ]},
+  {"name": "WhatsApp添加记录", "type": "select", "multiple": false, "options": [
+    {"name": "已添加", "hue": "Blue", "lightness": "Lighter"}
+  ]},
+  {"name": "背调结果", "type": "text"},
+  {"name": "WhatsApp破冰.输出结果", "type": "text"}
+]

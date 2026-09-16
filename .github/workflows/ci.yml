@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bash
+        run: bash --version
+
+      - name: Validate shell syntax
+        run: |
+          bash -n init.sh
+          bash -n install.sh
+
+      - name: Validate JSON files
+        run: |
+          for f in defs/*.json; do
+            jq empty "$f"
+          done

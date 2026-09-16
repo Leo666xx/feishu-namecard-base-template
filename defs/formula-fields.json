@@ -1,0 +1,13 @@
+[
+  {
+    "name": "名片ID",
+    "type": "formula",
+    "description": "从1开始排序，中间删除了就自动接着排序",
+    "expression": "[名片表].FILTER(CurrentValue.[录入时间]>=[录入时间]).[录入时间].UNIQUE().COUNTA()"
+  },
+  {
+    "name": "图片数量",
+    "type": "formula",
+    "expression": "COUNTA([名片图片])"
+  }
+]

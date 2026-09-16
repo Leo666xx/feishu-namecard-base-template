@@ -1,0 +1,52 @@
+{
+  "client_token": "__CLIENT_TOKEN__",
+  "title": "多图自动拆分为多行",
+  "steps": [
+    {
+      "id": "trig_split",
+      "type": "AddRecordTrigger",
+      "title": "新增名片记录时触发",
+      "next": "loop_img",
+      "data": {
+        "table_name": "名片表",
+        "watched_field_name": "名片图片",
+        "trigger_control_list": ["automationBatchUpdate"]
+      }
+    },
+    {
+      "id": "loop_img",
+      "type": "Loop",
+      "title": "遍历名片图片",
+      "children": {
+        "links": [
+          { "kind": "loop_start", "to": "add_row" }
+        ]
+      },
+      "next": null,
+      "data": {
+        "loop_mode": "continue",
+        "max_loop_times": 5,
+        "data": [
+          { "value_type": "ref", "value": "$.trig_split.__ATTACHMENT_FIELD_ID__" }
+        ]
+      }
+    },
+    {
+      "id": "add_row",
+      "type": "AddRecordAction",
+      "title": "为每张图片新建一条记录",
+      "next": null,
+      "data": {
+        "table_name": "名片表",
+        "field_values": [
+          {
+            "field_name": "名片图片",
+            "value": [
+              { "value_type": "ref", "value": "$.loop_img.item" }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
